@@ -1,0 +1,6 @@
+---
+curator_repo_dir: /etc/yum.repos.d
+curator_repo_file: curator.repo
+curator_package_list:
+  - python-setuptools
+  - python-elasticsearch-curator

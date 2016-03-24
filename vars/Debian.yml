@@ -1,0 +1,5 @@
+---
+curator_repo_dir: /etc/apt/sources.list.d
+curator_repo_file: curator.list
+curator_package_list:
+  - python-elasticsearch-curator

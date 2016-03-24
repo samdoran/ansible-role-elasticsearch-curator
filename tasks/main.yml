@@ -1,0 +1,20 @@
+---
+- name: Include distribution specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install curator repository
+  template:
+    src: "{{ curator_repo_file }}.j2"
+    dest: "{{ curator_repo_dir }}/{{ curator_repo_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - curator
+    - curator-repo
+
+- include: install-{{ ansible_os_family }}.yml
+  tags:
+    - curator
+
+

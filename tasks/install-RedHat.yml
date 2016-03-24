@@ -1,0 +1,26 @@
+---
+- name: RHEL | Install Elastic GPG key
+  rpm_key:
+    key: http://packages.elastic.co/GPG-KEY-elasticsearch
+    state: present
+  tags:
+    - curator
+    - curator-yum
+
+- name: RHEL | Install curator
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ curator_package_list }}"
+  tags:
+    - curator
+    - curator-yum
+
+- name: RHEL | Install python-unittest2
+  yum:
+    name: python-unittest2
+    state: latest
+  when: ansible_distribution_major_version | int == 6
+  tags:
+    - curator
+    - curator-yum
