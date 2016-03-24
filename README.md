@@ -21,16 +21,16 @@ Role Variables
 Dependencies
 ------------
 
-EPEL repo is needed for RHEL 6 in order to install `python-unittest2`. 
+samdoran.repo-epel (CentOS/RHEL 6 only)
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Only run the role on the first host in the group of elasticsearch nodes.
 
     - hosts: elasticsearch
       roles:
-         - { role: curator, when: ansible_hostname == groups['es'][0] }
+         - { role: curator, when: ansible_hostname == groups['elasticsearch'][0] }
 
 License
 -------
