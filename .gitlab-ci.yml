@@ -1,9 +1,7 @@
 ---
-image: "centos:6.7"
+image: "samdoran/gitlab-ci-test-el6"
 
 before_script:
-  - rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-  - yum -y --enablerepo=epel-testing install ansible initscripts
   - ansible --version
   - printf '[defaults]\nroles_path=../' > ansible.cfg
 
