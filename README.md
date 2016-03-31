@@ -14,6 +14,7 @@ Role Variables
 | Name              | Default Value       | Description          |
 |-------------------|---------------------|----------------------|
 | `curator_version` | `3` | Major version of `curator` to install. |
+| `curator_jobs` | `[see defaults/main.yml` | Cron jobs that run `curator`. Read the [official documentation](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/index.html) in order construct the commands. |
 | `curator_repo_dir` | `[OS dependent]` | Path where repository file is created. See `vars/(RedHat|Debian).yml` |
 | `curator_repo_file` | `[OS dependent` | Name of repository file. See `vars/(RedHat|Debian).yml` |
 | `curator_package_list` | `[OS dependent]` | List of packages to install when installing `curator`. See `vars/(RedHat|Debian).yml` |

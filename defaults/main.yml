@@ -1,2 +1,12 @@
 ---
 curator_version: 3
+curator_jobs:
+  - name: "Delete indices older than 30 days"
+    hour: 2
+    job: "curator --host localhost --port 9200 delete indices --older-than 30 --time-unit days --prefix logstash- --timestring '%Y.%m.%d'"
+
+  - name: "Close indices older than 7 days"
+    hour: 2
+    minute: 30
+    weekday: 0
+    job: "curator --host localhost --port 9200 close indices --older-than 7 --time-unit days --prefix logstash- --timestring '%Y.%m.%d'"

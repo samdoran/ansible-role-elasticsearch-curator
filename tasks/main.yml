@@ -1,6 +1,10 @@
 ---
 - name: Include distribution specific variables
   include_vars: "{{ ansible_os_family }}.yml"
+  tags:
+    - curator
+    - curator-repo
+    - curator-cron
 
 - name: Install curator repository
   template:
@@ -17,4 +21,16 @@
   tags:
     - curator
 
-
+- name: Ensure curator jobs run regulary
+  cron:
+    state: "{{ item.state | default ('present') }}"
+    name: "{{ item.name }}"
+    day: "{{ item.day | default('*') }}"
+    weekday: "{{ item.weekday | default('*') }}"
+    hour: "{{ item.hour }}"
+    minute: "{{ item.minute | default('0') }}"
+    job: "{{ item.job }}"
+  with_items: "{{ curator_jobs }}"
+  tags:
+    - curator
+    - curator-cron
