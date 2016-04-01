@@ -30,6 +30,8 @@
     hour: "{{ item.hour }}"
     minute: "{{ item.minute | default('0') }}"
     job: "{{ item.job }}"
+    cron_file: curator
+    user: root
   with_items: "{{ curator_jobs }}"
   tags:
     - curator
