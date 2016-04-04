@@ -2,5 +2,12 @@
 - hosts: all
   remote_user: vagrant
   become: True
+
+  vars:
+    es_group_name: "all"
+    es_version: 1.7
+    es_enable_mlockall: True
+
   roles:
-    - elasticsearch-curator
+    - elasticsearch
+    - curator
